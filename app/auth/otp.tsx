@@ -1,9 +1,9 @@
 import { Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold, useFonts } from "@expo-google-fonts/nunito";
 import { Ionicons } from '@expo/vector-icons';
-import AppLoading from 'expo-app-loading';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router, useLocalSearchParams } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect, useRef, useState } from 'react';
 import {
     Alert,
@@ -23,6 +23,15 @@ export default function OTP() {
         Nunito_600SemiBold,
         Nunito_700Bold,
     });
+
+    useEffect(() => {
+        // Keep the splash screen visible while we load fonts
+        SplashScreen.preventAutoHideAsync();
+
+        return () => {
+            // No-op cleanup; splash will be hidden once fonts load
+        };
+    }, []);
 
     // Get registration data from route params
     const params = useLocalSearchParams();
@@ -46,7 +55,17 @@ export default function OTP() {
         }
     }, [timer]);
 
-    if (!fontsLoaded) return <AppLoading />;
+    // When fonts aren't loaded yet keep splash visible. Once fontsLoaded becomes
+    // true we'll call hideAsync below to hide the splash and render the screen.
+    useEffect(() => {
+        if (fontsLoaded) {
+            SplashScreen.hideAsync().catch(() => {
+                /* ignore splash hide errors */
+            });
+        }
+    }, [fontsLoaded]);
+
+    if (!fontsLoaded) return null;
 
     const handleOtpChange = (value: string, index: number) => {
         if (!/^\d*$/.test(value)) return; // Only allow digits
@@ -225,7 +244,7 @@ export default function OTP() {
                         {otp.map((digit, index) => (
                             <TextInput
                                 key={index}
-                                ref={(ref) => (inputRefs.current[index] = ref)}
+                                ref={(ref) => { inputRefs.current[index] = ref; }}
                                 style={[
                                     styles.otpInput,
                                     digit && styles.otpInputFilled

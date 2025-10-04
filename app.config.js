@@ -4,10 +4,10 @@ export default {
     slug: "kelp",
     version: "1.0.0",
     orientation: "portrait",
-    icon: "./assets/icon.png",
+    icon: "./assets/images/kelp-splash-icon.png",
     userInterfaceStyle: "light",
     splash: {
-      image: "./assets/splash.png",
+      image: "./assets/images/kelp-splash-icon.png",
       resizeMode: "contain",
       backgroundColor: "#ffffff"
     },
@@ -17,7 +17,7 @@ export default {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: "./assets/adaptive-icon.png",
+        foregroundImage: "./assets/images/kelp-splash-icon.png",
         backgroundColor: "#ffffff"
       },
       package: "com.suspicious.kelp"

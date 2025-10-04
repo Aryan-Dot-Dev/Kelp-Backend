@@ -1,7 +1,8 @@
 import { Cairo_400Regular, useFonts } from "@expo-google-fonts/cairo";
-import AppLoading from 'expo-app-loading';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
+import * as SplashScreen from 'expo-splash-screen';
+import React, { useEffect } from 'react';
 import { Image, StyleSheet, Text, View } from "react-native";
 import SlideButton from '../components/SlideButton';
 
@@ -10,7 +11,18 @@ export default function Splash() {
         Cairo_400Regular,
     });
 
-    if (!fontsLoaded) return <AppLoading />;
+    useEffect(() => {
+        SplashScreen.preventAutoHideAsync();
+        return () => {};
+    }, []);
+
+    useEffect(() => {
+        if (fontsLoaded) {
+            SplashScreen.hideAsync().catch(() => {});
+        }
+    }, [fontsLoaded]);
+
+    if (!fontsLoaded) return null;
 
     return (
         <View style={styles.container}>

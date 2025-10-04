@@ -1,10 +1,10 @@
 import { Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold, useFonts } from "@expo-google-fonts/nunito";
 import { Ionicons } from '@expo/vector-icons';
-import AppLoading from 'expo-app-loading';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { Accelerometer } from 'expo-sensors';
+import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect, useRef, useState } from 'react';
 import {
     ActivityIndicator,
@@ -26,6 +26,15 @@ export default function Register() {
         Nunito_600SemiBold,
         Nunito_700Bold,
     });
+
+    useEffect(() => {
+        // Keep native splash visible while loading fonts
+        SplashScreen.preventAutoHideAsync();
+
+        return () => {
+            // cleanup no-op; splash will be hidden once fonts load
+        };
+    }, []);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -125,7 +134,15 @@ export default function Register() {
         }, 2000);
     };
 
-    if (!fontsLoaded) return <AppLoading />;
+    useEffect(() => {
+        if (fontsLoaded) {
+            SplashScreen.hideAsync().catch(() => {
+                /* ignore */
+            });
+        }
+    }, [fontsLoaded]);
+
+    if (!fontsLoaded) return null;
 
     const handleRegister = async () => {
         // Validation
