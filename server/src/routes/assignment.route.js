@@ -548,4 +548,4 @@ router.delete('/file/:key', verifyCRorTeacher, async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;
