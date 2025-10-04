@@ -1,8 +1,8 @@
-const express = require('express');
-const multer = require('multer');
-const { PrismaClient } = require('@prisma/client');
-const { verifyCRorTeacher, verifyAuth } = require('../middleware/cr.middleware');
-const fileioService = require('../services/fileio.service');
+import { PrismaClient } from '@prisma/client';
+import express from 'express';
+import multer from 'multer';
+import { verifyAuth, verifyCRorTeacher } from '../middleware/cr.middleware.js';
+import fileioService from '../services/fileio.service.js';
 
 const router = express.Router();
 const prisma = new PrismaClient();
