@@ -43,6 +43,14 @@ await verifyEmailService();
 
 console.log('PORT:', process.env.PORT);
 
+app.get("/", (req, res) => {
+  res.send("Kelp Backend is running");
+});
+
+app.get("/health", (req, res) => {
+  res.json({ status: "OK", timestamp: new Date().toISOString() });
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
