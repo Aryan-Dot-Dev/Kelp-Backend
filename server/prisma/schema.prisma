@@ -1,0 +1,114 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URI")
+}
+
+model User {
+  id                 String             @id @default(uuid())
+  name               String
+  email              String             @unique
+  password           String
+  role               Role               @default(STUDENT)
+  createdAt          DateTime           @default(now())
+  createdAssignments Assignment[]       @relation("CreatedAssignments")
+  createdExams       Exam[]             @relation("CreatedExams")
+  StudentAttendance  StudentAttendance?
+  submissions        Submission[]
+}
+
+model Assignment {
+  id          String       @id @default(uuid())
+  title       String
+  description String
+  documentUrl String?
+  fileKey     String?
+  fileUrl     String?
+  dueDate     DateTime
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  createdById String
+  createdBy   User         @relation("CreatedAssignments", fields: [createdById], references: [id])
+  submissions Submission[]
+
+  @@index([createdById])
+  @@index([dueDate])
+}
+
+model Submission {
+  id            String     @id @default(uuid())
+  rollNumber    String
+  submissionUrl String?
+  fileKey       String?
+  fileUrl       String?
+  submittedAt   DateTime   @default(now())
+  assignmentId  String
+  userId        String
+  assignment    Assignment @relation(fields: [assignmentId], references: [id])
+  user          User       @relation(fields: [userId], references: [id])
+
+  @@unique([assignmentId, userId])
+  @@index([assignmentId])
+  @@index([userId])
+}
+
+model CourseAttendance {
+  id                  String            @id
+  studentAttendanceId String
+  srNo                Int
+  courseName          String            @db.VarChar(255)
+  courseShortName     String            @db.VarChar(255)
+  courseCode          String            @db.VarChar(20)
+  attended            Int
+  delivered           Int
+  percentage          Decimal           @db.Decimal(5, 2)
+  scrapedAt           DateTime          @default(now())
+  StudentAttendance   StudentAttendance @relation(fields: [studentAttendanceId], references: [id], onDelete: Cascade)
+
+  @@unique([studentAttendanceId, courseCode])
+  @@index([courseCode])
+  @@index([percentage])
+  @@index([studentAttendanceId])
+}
+
+model Exam {
+  id          String   @id @default(uuid())
+  title       String
+  date        DateTime
+  type        ExamType @default(MIDSEM)
+  createdById String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   User     @relation("CreatedExams", fields: [createdById], references: [id])
+
+  @@index([createdById], map: "Exam_createdById_fkey")
+}
+
+model StudentAttendance {
+  id               String             @id
+  userId           String             @unique
+  totalAttended    Int
+  totalDelivered   Int
+  totalPercentage  Decimal            @db.Decimal(5, 2)
+  lastScraped      DateTime           @default(now())
+  updatedAt        DateTime
+  CourseAttendance CourseAttendance[]
+  User             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([lastScraped])
+  @@index([totalPercentage])
+}
+
+enum ExamType {
+  MIDSEM
+  ENDSEM
+}
+
+enum Role {
+  STUDENT
+  CR
+  TEACHER
+}
