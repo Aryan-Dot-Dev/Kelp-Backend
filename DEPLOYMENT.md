@@ -69,7 +69,7 @@
    ```
 
 2. **Update API URLs**
-   - Replace all `http://localhost:5000` with your backend URL
+   - Replace all `https://kelp-backend-fywm.onrender.com` with your backend URL
    - Files to update:
      - `app/auth/*.tsx`
      - `app/dashboard/*.tsx`

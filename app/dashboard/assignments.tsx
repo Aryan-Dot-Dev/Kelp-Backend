@@ -60,7 +60,7 @@ export default function StudentAssignmentsScreen() {
     const loadAssignments = async () => {
         try {
             const token = await authService.getToken();
-            const response = await fetch('http://localhost:5000/api/assignments/list', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.com/api/assignments/list', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -114,7 +114,7 @@ export default function StudentAssignmentsScreen() {
                 } as any);
             }
 
-            const response = await fetch(`http://localhost:5000/api/assignments/${selectedAssignment.id}/submit`, {
+            const response = await fetch(`https://kelp-backend-fywm.onrender.comywm.onrender.com/api/assignments/${selectedAssignment.id}/submit`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`

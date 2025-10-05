@@ -164,12 +164,12 @@ You can test the endpoints using:
 Example cURL:
 ```bash
 # Send OTP
-curl -X POST http://localhost:5000/api/auth/send-otp \
+curl -X POST https://kelp-backend-fywm.onrender.com/api/auth/send-otp \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com"}'
 
 # Register
-curl -X POST http://localhost:5000/api/auth/register \
+curl -X POST https://kelp-backend-fywm.onrender.comywm.onrender.com/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","password":"test123","role":"STUDENT","otp":"123456"}'
 ```

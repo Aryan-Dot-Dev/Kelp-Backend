@@ -174,7 +174,7 @@ export default function Register() {
 
         try {
             // Call send-otp endpoint
-            const response = await fetch('http://localhost:5000/api/auth/send-otp', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.com/api/auth/send-otp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

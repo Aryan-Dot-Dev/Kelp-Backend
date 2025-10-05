@@ -106,7 +106,7 @@ export default function OTP() {
 
         try {
             // Call register endpoint to verify OTP and create user
-            const response = await fetch('http://localhost:5000/api/auth/register', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.com/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(registrationData)
@@ -180,7 +180,7 @@ export default function OTP() {
         if (timer === 0) {
             try {
                 // Call resend-otp endpoint
-                const response = await fetch('http://localhost:5000/api/auth/resend-otp', {
+                const response = await fetch('https://kelp-backend-fywm.onrender.com/api/auth/resend-otp', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })

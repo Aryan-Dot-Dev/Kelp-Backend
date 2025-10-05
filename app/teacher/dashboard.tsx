@@ -51,7 +51,7 @@ export default function TeacherDashboard() {
             const token = await authService.getToken();
             
             // Fetch students attendance for stats
-            const attendanceResponse = await fetch('http://localhost:5000/api/assignments/attendance/all', {
+            const attendanceResponse = await fetch('https://kelp-backend-fywm.onrender.com/api/assignments/attendance/all', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -70,7 +70,7 @@ export default function TeacherDashboard() {
             }
 
             // Fetch assignments for stats
-            const assignmentsResponse = await fetch('http://localhost:5000/api/assignments/list', {
+            const assignmentsResponse = await fetch('https://kelp-backend-fywm.onrender.comywm.onrender.com/api/assignments/list', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -50,7 +50,7 @@ export default function Login() {
 
         try {
             // Call login endpoint
-            const response = await fetch('http://localhost:5000/api/auth/login', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.com/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

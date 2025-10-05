@@ -57,7 +57,7 @@ export default function StudentsAttendance() {
     const loadStudentsAttendance = async () => {
         try {
             const token = await authService.getToken();
-            const response = await fetch('http://localhost:5000/api/assignments/attendance/all', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.com/api/assignments/attendance/all', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

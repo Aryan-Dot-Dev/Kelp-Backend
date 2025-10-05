@@ -36,7 +36,7 @@ export default {
       eas: {
         projectId: "5af890a2-1a28-40f9-a25e-bb6232db8a09"
       },
-      apiUrl: process.env.EXPO_PUBLIC_API_URL || "http://localhost:5000"
+      apiUrl: process.env.EXPO_PUBLIC_API_URL || "https://kelp-backend-fywm.onrender.com"
     }
   }
 };

@@ -62,7 +62,7 @@ export default function Attendance() {
                 return;
             }
 
-            const response = await fetch(`http://localhost:5000/api/attendance/student/${userData.id}`);
+            const response = await fetch(`https://kelp-backend-fywm.onrender.com/api/attendance/student/${userData.id}`);
             const data = await response.json();
 
             if (response.ok && data.success) {

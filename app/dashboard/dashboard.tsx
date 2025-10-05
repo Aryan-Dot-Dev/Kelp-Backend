@@ -49,7 +49,7 @@ export default function Dashboard() {
             const user = await authService.getUserData();
             if (!user || !user.id) return;
 
-            const response = await fetch(`http://localhost:5000/api/attendance/latest/${user.id}`);
+            const response = await fetch(`https://kelp-backend-fywm.onrender.com/api/attendance/latest/${user.id}`);
             const data = await response.json();
 
             if (response.ok && data.success) {
@@ -93,7 +93,7 @@ export default function Dashboard() {
     const loadUpcomingExam = async () => {
         try {
             const token = await authService.getToken();
-            const response = await fetch('http://localhost:5000/api/exams/upcoming', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.comywm.onrender.com/api/exams/upcoming', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

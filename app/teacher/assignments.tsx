@@ -63,7 +63,7 @@ export default function Assignments() {
     const loadAssignments = async () => {
         try {
             const token = await authService.getToken();
-            const response = await fetch('http://localhost:5000/api/assignments/list', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.com/api/assignments/list', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -113,7 +113,7 @@ export default function Assignments() {
                 } as any);
             }
 
-            const response = await fetch('http://localhost:5000/api/assignments/create', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.comywm.onrender.com/api/assignments/create', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -165,7 +165,7 @@ export default function Assignments() {
                 } as any);
             }
 
-            const response = await fetch(`http://localhost:5000/api/assignments/${editingAssignment.id}`, {
+            const response = await fetch(`https://kelp-backend-fywm.onrender.comywm.onrender.com/api/assignments/${editingAssignment.id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -208,7 +208,7 @@ export default function Assignments() {
                     onPress: async () => {
                         try {
                             const token = await authService.getToken();
-                            const response = await fetch(`http://localhost:5000/api/assignments/${assignmentId}`, {
+                            const response = await fetch(`https://kelp-backend-fywm.onrender.comywm.onrender.com/api/assignments/${assignmentId}`, {
                                 method: 'DELETE',
                                 headers: {
                                     'Authorization': `Bearer ${token}`
