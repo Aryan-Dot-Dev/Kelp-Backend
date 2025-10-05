@@ -20,7 +20,18 @@ export default {
         foregroundImage: "./assets/images/kelp-splash-icon.png",
         backgroundColor: "#ffffff"
       },
-      package: "com.suspicious.kelp"
+      package: "com.suspicious.kelp",
+      permissions: [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+      ],
+      usesCleartextTraffic: true,
+      config: {
+        googleMaps: {
+          apiKey: ""
+        }
+      }
     },
     web: {
       favicon: "./assets/favicon.png",
@@ -36,7 +47,7 @@ export default {
       eas: {
         projectId: "5af890a2-1a28-40f9-a25e-bb6232db8a09"
       },
-      apiUrl: process.env.EXPO_PUBLIC_API_URL || "https://kelp-backend-fywm.onrender.com"
+      apiUrl: "https://kelp-backend-fywm.onrender.com"
     }
   }
 };

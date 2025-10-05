@@ -26,7 +26,10 @@ console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? '***configured***' : 'MISSIN
 const app = express();
 const prisma = new PrismaClient();
 
-app.use(cors());
+app.use(cors({
+  origin: '*', // Or specify your domains
+  credentials: true
+}));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
