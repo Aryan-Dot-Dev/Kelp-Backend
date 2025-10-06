@@ -100,7 +100,7 @@ export default function Exams() {
         setSubmitting(true);
         try {
             const token = await authService.getToken();
-            const response = await fetch('https://kelp-backend-fywm.onrender.comywm.onrender.com/api/exams/create', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.com/api/exams/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ export default function Exams() {
                     onPress: async () => {
                         try {
                             const token = await authService.getToken();
-                            const response = await fetch(`https://kelp-backend-fywm.onrender.comywm.onrender.com/api/exams/${examId}`, {
+                            const response = await fetch(`https://kelp-backend-fywm.onrender.com/api/exams/${examId}`, {
                                 method: 'DELETE',
                                 headers: {
                                     'Authorization': `Bearer ${token}`

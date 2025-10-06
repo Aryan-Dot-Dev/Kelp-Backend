@@ -114,7 +114,7 @@ export default function StudentAssignmentsScreen() {
                 } as any);
             }
 
-            const response = await fetch(`https://kelp-backend-fywm.onrender.comywm.onrender.com/api/assignments/${selectedAssignment.id}/submit`, {
+            const response = await fetch(`https://kelp-backend-fywm.onrender.com/api/assignments/${selectedAssignment.id}/submit`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`

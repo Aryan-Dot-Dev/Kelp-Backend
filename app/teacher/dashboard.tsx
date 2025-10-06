@@ -70,7 +70,7 @@ export default function TeacherDashboard() {
             }
 
             // Fetch assignments for stats
-            const assignmentsResponse = await fetch('https://kelp-backend-fywm.onrender.comywm.onrender.com/api/assignments/list', {
+            const assignmentsResponse = await fetch('https://kelp-backend-fywm.onrender.com/api/assignments/list', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

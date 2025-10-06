@@ -169,7 +169,7 @@ curl -X POST https://kelp-backend-fywm.onrender.com/api/auth/send-otp \
   -d '{"email":"test@example.com"}'
 
 # Register
-curl -X POST https://kelp-backend-fywm.onrender.comywm.onrender.com/api/auth/register \
+curl -X POST https://kelp-backend-fywm.onrender.com/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","password":"test123","role":"STUDENT","otp":"123456"}'
 ```

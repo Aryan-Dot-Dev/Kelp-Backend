@@ -15,7 +15,7 @@ const timetableUtil = [
                 teacher: 'Mrs Megha Sharma'
             },
             {
-                time: '10:11 AM - 11:50 AM',
+                time: '11:00 AM - 11:50 AM',
                 name: 'Mobile App Development',
                 location: 'B-316',
                 teacher: 'Mr Nehal Kadyan'

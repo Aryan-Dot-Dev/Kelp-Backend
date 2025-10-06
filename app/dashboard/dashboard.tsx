@@ -93,7 +93,7 @@ export default function Dashboard() {
     const loadUpcomingExam = async () => {
         try {
             const token = await authService.getToken();
-            const response = await fetch('https://kelp-backend-fywm.onrender.comywm.onrender.com/api/exams/upcoming', {
+            const response = await fetch('https://kelp-backend-fywm.onrender.com/api/exams/upcoming', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
